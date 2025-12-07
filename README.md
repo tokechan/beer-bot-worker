@@ -2,6 +2,8 @@
 
 LINE Messaging API を使用したビール推薦 Bot です。ユーザーの気分に応じて、適切なビールと商品 URL を推薦します。
 
+📖 **詳細な仕様書**: [外部仕様書](./docs/external-specification.md) を参照してください。
+
 ## 機能
 
 - ユーザーの気分（「リラックスしたい」「疲れた」「スッキリしたい」など）に応じたビール推薦
@@ -34,9 +36,20 @@ cp .env.example .env
 1. [LINE Developers Console](https://developers.line.biz/console/)にアクセス
 2. プロバイダーを作成（初回のみ）
 3. チャネルを作成し、Messaging API を有効化
-4. Channel Access Token と Channel Secret を取得
-5. Webhook URL を設定（開発時は ngrok を使用、本番環境では実際のドメイン）
-6. Webhook の利用を有効化
+4. **Channel Access Token を発行**
+   - Messaging API 設定ページで「チャネルアクセストークン」セクションを探す
+   - 「発行」または「再発行」ボタンをクリック
+   - 表示されたトークンをコピー（**重要**: これは `Channel ID` とは別物です）
+5. **Channel Secret を確認**
+   - 同じページの「Channel secret」をコピー
+6. Webhook URL を設定（開発時は ngrok を使用、本番環境では実際のドメイン）
+7. Webhook の利用を有効化
+
+**注意**:
+
+- `Channel ID` と `Channel Access Token` は**別物**です
+- `Channel Access Token` は長い文字列（通常 100 文字以上）です
+- `Channel ID` は短い数字（例: `2008645552`）です
 
 ## 開発
 
@@ -139,6 +152,8 @@ beer-bot-worker/
 ├── tsconfig.json
 ├── .env.example
 ├── README.md
+├── docs/
+│   └── external-specification.md  # 外部仕様書
 └── src/
     ├── index.ts              # メインサーバー
     ├── handlers/
