@@ -1,0 +1,20 @@
+# npm pack / SAM build に含めないもの（.gitignoreの代わり）
+node_modules/
+.aws-sam/
+samconfig.toml
+
+# 環境変数（機密）
+.env
+.env.*
+
+# ローカル開発向け
+.vscode/
+.idea/
+
+# ドキュメント（必要なら外す）
+docs/
+
+# OS
+.DS_Store
+
+
